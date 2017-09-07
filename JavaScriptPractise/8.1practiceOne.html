@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			span{
+				/*display: block;*/
+				width: 150px;
+				height: 20px;
+				/*border: 1px solid red*/
+			}
+		</style>
+		<script>
+			/*
+			 任务：即时校验，在失去焦点时，做校验，如果校验未通过，使用文本在输入框的后面进行提示，出现红色的X
+             	 如果通过校验，只有有一个绿色的√
+			 * */
+			window.onload=function(){
+				var content=document.getElementById("name");
+				var sp=document.getElementById("s");
+				var picture=document.getElementById("picture");
+				content.addEventListener("blur",function(){
+					var v=content.value;
+					if(v=="")
+					{
+						sp.innerHTML="请输入名字";
+						picture.innerHTML="<img src='img/×.png' />";
+					}
+					else if(!isNaN(v))
+					{
+						sp.innerHTML="不能全是数字";
+						picture.innerHTML="<img src='img/×.png' />";
+					}
+					else{
+						sp.innerHTML="";
+						picture.innerHTML="<img src='img/勾.png' />";
+					}
+				})
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<input type="text" name="" id="name" value="" />
+		<span id="s"></span>
+		<span id="picture"></span>
+	</body>
+</html>

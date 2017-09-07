@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 下拉框，从JSON中获取数据，将下拉框填充数据
+			 */
+			window.onload = ajax;
+			//window.onload=function(){
+			function ajax() {
+				//document.getElementsByClassName("op").onclick = function(){
+				//function click(){
+				var xhr = new XMLHttpRequest();
+				var selectOne = document.getElementById("selectOne");
+				var selectTwo = document.getElementById("selectTwo");
+				var selectThree = document.getElementById("selectThree");
+				xhr.onreadystatechange = function() {
+					if(xhr.status == 200 && xhr.readyState == 4) {
+						var o = JSON.parse(xhr.responseText);
+						for(var i = 0; i < o.length; i++) {
+							
+							//{
+								//console.log("23");
+							if(selectOne.children[i].selected)
+							{
+								//alert("23");
+								console.log(selectOne.children[i].value);
+								//if(o[i].age==undefined)
+								//{
+									//var newOp=selectOne.createElement("select");
+									selectTwo.children[0].innerText=o[i].age;
+							//	}
+								
+								selectThree.children[0].innerText=o[i].sex;
+								//return;
+							}
+							//}
+						}
+						for(var i=0;i<o.length;i++)
+						{
+							selectOne.children[i].innerText = o[i].name;
+						}
+					}
+				}
+				xhr.open("GET", "8.4practiceOne.json", true);
+				xhr.send();
+			}
+			//document.getElementById("buto").onclick=ajax();
+		</script>
+	</head>
+
+	<body>
+		<select id="selectOne" onclick="ajax()" >
+			<option class="op" ></option>
+			<option class="op"></option>
+			<option class="op"></option>
+		</select>
+		<select id="selectTwo">
+			<option></option>
+		</select>
+		<select id="selectThree">
+			<option></option>
+		</select>
+		<br />
+		<!--<input type="button" value="test" id="buto" onclick="ajax()"/>-->
+	</body>
+
+</html>

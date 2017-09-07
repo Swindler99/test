@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$(function(){
+				var numOne=0;
+				var numTwo=0;
+				var nums=0;
+				var totalPrice=0;
+				$("[name=checkAll]").on("click",a,function(){
+					$("[name=checkComdity]").prop("checked",$(this).prop("checked"));
+				});
+				$("[name=checkComdity]").on("click",function(){
+					
+					if($("[name=checkComdity]:checked").length==$("[name=checkComdity]").length)
+					{
+						$("[name=checkAll]").prop("checked","checked");
+					}
+					if($("[name=checkComdity]:checked").length==0)
+					{
+						$("[name=checkAll]").prop("checked",false);
+					}
+				})
+				
+				$("#rightOne").on("click",function(){
+					numOne++;
+					$("#mindOne").text(numOne);
+					$("#leftOne").html("<a href='#'>-</a>");
+				});
+				$("#rightOne").on("click",a);
+				$("#leftOne").on("click",a);
+				$("#rightTwo").on("click",a);
+				$("#leftTwo").on("click",a);
+				$("#leftOne").on("click",function(){
+					if(numOne>=2)
+					{
+						numOne--;
+						$("#mindOne").text(numOne);
+					}
+					if(numOne==1){
+						$("#leftOne").text("");
+					}
+					
+				});
+				
+				$("#rightTwo").on("click",function(){
+					numTwo++;
+					$("#mindTwo").text(numTwo);
+					$("#leftTwo").html("<a href='#'>-</a>");
+				});
+				$("#leftTwo").on("click",function(){
+					if(numTwo>=2)
+					{
+						numTwo--;
+						$("#mindTwo").text(numTwo);
+					}
+					if(numTwo==1){
+						$("#leftTwo").text("");
+					}
+				});
+				//计算商品的总数
+				function a(){
+					nums=0;
+					totalPrice=0;
+					//console.log("11");
+					if($("#checkComdity1").prop("checked"))
+					{
+						nums=nums+numOne;
+						totalPrice=numOne*60+totalPrice;
+					}
+					if($("#checkComdity2").prop("checked"))
+					{
+						nums+=numTwo;
+						totalPrice=numTwo*90+totalPrice;
+					}
+					
+				//	console.log(nums);
+					$("#allAmount input").val(nums);
+					$("#price input").val(totalPrice);
+					if(nums==0)
+						{
+							$("[name=pay]").prop("disabled","disabled")
+						}
+						else{
+							$("[name=pay]").prop("disabled",false)
+						}
+				}
+				$("[name=checkComdity]").on("click",a);
+				$("[name=checkAll]").on("click",a);
+				window.onload=function(){//使得没有商品是不能点击结算按钮
+					$("[name=pay]").prop("disabled","disabled");
+				}
+				//给删除添加点击事件
+				$("#delOne").on("click",function(){
+					this.parentNode.remove(this);
+				})
+				$("#delTwo").on("click",function(){
+					this.parentNode.remove(this);
+				})
+				
+				
+			});
+		</script>
+		<style>
+			#commodity1{
+				width: 500px;
+				height: 100px;
+				border: 1px solid gray;
+				margin-bottom: 10px;
+				background-color: pink;
+			}
+			#commodity2{
+				width: 500px;
+				height: 100px;
+				border: 1px solid gray;
+				margin-bottom: 10px;
+				background-color: pink;
+			}
+			#totalPrices{
+				width: 500px;
+				height: 100px;
+				border: 1px solid gray;
+				position: absolute;
+				top: 250px;
+			}
+			table{
+				border: 1px solid black;
+				border-collapse: collapse;
+				position: relative;
+				left: 300px;
+				top: -20px;
+			}
+			td{
+				border: 1px solid gray;
+				width: 20px;
+				height: 20px;
+			}
+			td a{
+				text-decoration: none;
+				color: black;
+				display: block;
+				width: 20px;
+				height: 20px;
+			}
+			#mindOne{
+				width: 50px;
+			}
+			#mindTwo{
+				width: 50px;
+			}
+			#moneyOne{
+				position: absolute;
+				left: 410px;
+				top: 10px;
+			}
+			#moneyTwo{
+				position: relative;
+				left: 330px;
+				top: 0px;
+			}
+			#delOne a{
+				text-decoration: none;
+				color: black;
+			}
+			#delTwo a{
+				text-decoration: none;
+				color: black;
+			}
+			#delTwo{
+				position: relative;
+				left: 340px;
+				top: 0px;
+			}
+			#delOne{
+				position: absolute;
+				left: 470px;
+				top: 10px;
+			}
+			#allAmount input{
+				width: 10px;
+			}
+			#allAmount{
+				position: absolute;
+				left: 200px;
+				top: 0px;
+				float: left;
+			}
+			#price{
+				position: absolute;
+				left: 340px;
+				top: 0px;
+				float: left;
+			}
+			#price input{
+				width: 50px;
+				color: red;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="commodity1">
+			<input type="checkbox" name="checkComdity" id="checkComdity1" value="" />
+			<span>商品1</span>
+			<table >
+				<tr>
+					<td id="leftOne"><a href="#"> - </a></td>
+					<td id="mindOne"></td>
+					<td id="rightOne"><a href="#"> + </a></td>
+				</tr>
+			</table>
+			<span id="moneyOne">￥60.00</span>
+			<span id="delOne"><a href="#">删除</a></span>
+		</div>
+		<div id="commodity2">
+			<input type="checkbox" name="checkComdity" id="checkComdity2" value="" />
+			<span>商品2</span>
+			<table >
+				<tr>
+					<td id="leftTwo"><a href="#"> - </a></td>
+					<td id="mindTwo"></td>
+					<td id="rightTwo"><a href="#"> + </a></td>
+				</tr>
+				<span id="moneyTwo">￥90.00</span>
+				<span id="delTwo"><a href="#">删除</a></span>
+			</table>
+		</div>
+		<div id="totalPrices" ng-app="">
+			<input type="checkbox" name="checkAll" id="checkComdityall" value="" />全选/全不选
+			<div id="allAmount">已选择<input  type="text" value="0" style="color: red;font-weight: bold; width: 20px;" />
+			件商品</div>
+			<div id="price">总价: <input type="text" name="totalPrices" " id="Prices" value="" />  </div>
+			<input type="button" value="去结算" name="pay" style="position: absolute; left: 300px;top: 50px;width: 60px;height: 40px;background-color: red;color: white;font-weight: bold;" />
+		</div>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script>
+			var n=6;
+			$(function(){
+			
+				var clear= setInterval(function(){	
+					if(n==0){
+						$("#but").val("可以点击");
+						//return 0;
+						clearInterval(clear);
+					}
+					else
+					{
+					n--;
+					$("#but").val(n);
+					return n;
+					}
+				},"1000");
+					
+			});
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" id="but" style="width: 100px;" />
+	</body>
+</html>

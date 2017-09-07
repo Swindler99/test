@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<script src="js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="studentManage.css" />
+		<script src="js/template.js" type="text/javascript" charset="utf-8"></script>
+		<script src="studentManage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="My97DatePicker/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<!--课程模板-->
+	<script type="text/html" id="courseMode">
+		<table class="table-bordered">
+			<tr>
+				<td></td>
+				<td>课程名</td>
+				<td>学分</td>
+				<td>内容</td>
+				<td>修改</td>
+				<td>删除</td>
+			</tr>
+			{{each courses as course}}
+			<tr>
+				<td>{{course.id}}</td>
+				<td>{{course.name}}</td>
+				<td>{{course.credit}}</td>
+				<td>{{course.content}}</td>
+				<td><span class="glyphicon glyphicon-pencil" id="changeCourse" data-toggle="modal" data-target="#courseModal"></span> </td>
+				<td><span class="glyphicon glyphicon-trash" id="delCourse"></span></td>
+			</tr>
+			{{/each}}
+		</table>
+	</script>
+	<!--学生模板-->
+	<script type="text/html" id="studentMode">
+		<table class="table-bordered">
+			<tr>
+				<td></td>
+				<td>学生名字</td>
+				<td>学号</td>
+				<td>性别</td>
+				<td>籍贯</td>
+				<td>修改</td>
+				<td>删除</td>
+			</tr>
+			{{each students as course i}}
+			<tr>
+				<td>{{students[i].id}}</td>
+				<td>{{students[i].name}}</td>
+				<td>{{students[i].no}}</td>
+				<td>{{students[i].gender}}</td>
+				<td>{{students[i].homeCity}}</td>
+				<td><span class="glyphicon glyphicon-pencil" id="changeStudent" data-toggle="modal" data-target="#studentModal"></span></td>
+				<td><span class="glyphicon glyphicon-trash" id="delStudent"></span></td>
+			</tr>
+			{{/each}}
+		</table>
+	</script>
+	<!--学生分页模板-->
+	<script type="text/html" id="studentPageMode">
+		<nav aria-label="Page navigation">
+			<ul class="pagination pagination-lg">
+				<li id="stuPagePrevious">
+					<a href="#" aria-label="Previous" >
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				{{each totalPage as page}}
+				<li class="stuPageNum ">
+					<a href="#" >{{page}}</a>
+				</li>
+				{{/each}}
+				<li id="stuPageNext">
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</script >
+	<!--成绩模板-->
+	<script type="text/html" id="gradeMode">
+		<table class="table-bordered">
+			<tr>
+				<td>课程id</td>
+				<td>课程名字</td>
+				<td>学生id</td>
+				<td>学生名字</td>
+				<td>成绩id</td>
+				<td>分数</td>
+				<td>修改</td>
+				<td>删除</td>
+				
+			</tr>
+			{{each scores as score i}}
+			<tr>
+				<td>{{score.courseId}}</td>
+				<td>{{score.courseName}}</td>
+				<td>{{score.studentId}}</td>
+				<td>{{score.studentName}}</td>
+				<td>{{score.id}}</td>
+				<td>{{score.score}}</td>
+				<td><span class="glyphicon glyphicon-pencil" id="changeScore" data-toggle="modal" data-target="#scoreModal"></span></td>
+				<td><span class="glyphicon glyphicon-trash" id="delScore"></span></td>
+			</tr>
+			{{/each}}
+		</table>
+	</script>
+	<body>
+		<div class="tabbable">
+			<ul class="nav nav-pills navbar-default">
+				<li class="active">
+					<a href="#tab2" data-toggle="tab" class="navbar-brand "><span class="glyphicon glyphicon-user"></span> 学生管理</a>
+				</li>
+				<li>
+					<a href="#tab3" data-toggle="tab" class="navbar-brand"><span class="glyphicon glyphicon-list-alt"></span> 课程管理</a>
+				</li>
+				<li>
+					<a href="#tab4" data-toggle="tab" class="navbar-brand"><span class="glyphicon glyphicon-th-list"></span>成绩管理</a>
+				</li>
+			</ul>
+		</div>
+		<div class="tab-content">
+			<div class="tab-pane" id="tab2">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2">
+							<div class="tabbable">
+								<div class="list-group">
+									<a href="#" class="list-group-item " data-toggle="tab" style="background-color: #2E6DA4; height: 40px;"></a>
+									<a href="#displayStudent" class="list-group-item " data-toggle="tab" id="studentList">学生列表</a>
+									<a href="#displayAddStudent" class="list-group-item" data-toggle="tab" id="addStudent">增加学生</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-10">
+							<div class="tab-content">
+								<!--<div>-->
+									<div id="displayStudent" class="tab-pane">
+									学生列表
+									</div>
+									<!--<div id="displayStuPage" class="tab-pane">
+									</div>-->
+								<!--</div>-->
+								
+								<div id="displayAddStudent" class="tab-pane">
+									<form class="form-horizontal">
+										<div class="form-group">
+											<label for="addStudentName" class="col-sm-2 control-label">学生名字</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="addStudentName" placeholder="输入学生名字">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addStudentNo" class="col-sm-2 control-label">学生学号</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="addStudentNo" placeholder="输入学生学号">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addStudentGender" class="col-sm-2 control-label">性别</label>
+											<div class="col-sm-10">
+												<input type="radio" class=" btn btn-default" name="addStudentGender" value="男">男<br />
+												<input type="radio" class="btn btn-default" name="addStudentGender" value="女">女<br />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addStudentBirthdate" class="col-sm-2 control-label">学生出生年月</label>
+											<div class="col-sm-10">
+												<input type="text" id="addStudentBirthdate" class="Wdate" onFocus="WdatePicker({lang:'zh-cn'})" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addStudentPassword" class="col-sm-2 control-label">学生密码</label>
+											<div class="col-sm-10">
+												<input type="number" class="form-control" id="addStudentPassword" placeholder="输入学生密码">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addStudentHomecity" class="col-sm-2 control-label">学生籍贯</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="addStudentHomecity" placeholder="输入学生籍贯">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addStudentAvatar" class="col-sm-2 control-label">学生头像</label>
+											<div class="col-sm-10">
+												<input type="file" class="form-control" id="addStudentAvatar" placeholder="学生头像" value="">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button type="button" class="btn btn-info" id="addStudentAffirm">确认</button>
+												<button type="button" class="btn btn-default" id="concelAddStudent">取消</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane" id="tab3">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2">
+							<div class="tabbable">
+								<div class="list-group">
+									<a href="#" class="list-group-item " data-toggle="tab" style="background-color: #2E6DA4; height: 40px;"></a>
+									<a href="#displayCourse" class="list-group-item " data-toggle="tab" id="courseList">课程列表</a>
+									<a href="#displayAddCourse" class="list-group-item" data-toggle="tab" id="addCourse">增加课程</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-10">
+							<div class="tab-content">
+								<div id="displayCourse" class="tab-pane">
+									<!--课程列表-->
+								</div>
+								<div id="displayAddCourse" class="tab-pane">
+									<form class="form-horizontal">
+										<div class="form-group">
+											<label for="addCourseName" class="col-sm-2 control-label">课程名字</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="addCourseName" placeholder="输入课程名字">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addCourseCredit" class="col-sm-2 control-label">课程学分</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="addCourseCredit" placeholder="输入课程学分">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addCourseContent" class="col-sm-2 control-label">课程内容</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="addCourseContent" placeholder="输入课程内容">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button type="button" class="btn btn-info" id="addCourseAffirm">确认</button>
+												<button type="button" class="btn btn-default" id="concelAddCourse">取消</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="tab-pane" id="tab4">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2">
+							<div class="tabbable">
+								<div class="list-group">
+									<a href="#" class="list-group-item " data-toggle="tab" style="background-color: #2E6DA4; height: 40px;"></a>
+									<a href="#displayGradeList" class="list-group-item " data-toggle="tab" id="gradeList">成绩列表</a>
+									<a href="#displayAddGrade" class="list-group-item" data-toggle="tab" id="addGrade">增加成绩</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-10">
+							<div class="tab-content">
+								<div id="displayGradeList" class="tab-pane">
+									<!--成绩列表-->
+								</div>
+								<div id="displayAddGrade" class="tab-pane">
+									<!--增加成绩-->
+									<form class="form-horizontal">
+										<div class="form-group">
+											<label for="addStudentId" class="col-sm-2 control-label">选择学生id</label>
+											<div class="col-sm-10">
+										<input type="text" class="form-control" id="addStudentId" placeholder="输入学生id"/>
+													<!--<select id="addStudentId" ></select>-->
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addCourseId" class="col-sm-2 control-label">课程id</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="addCourseId" placeholder="输入课程id">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addCourseGrade" class="col-sm-2 control-label">课程成绩</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="addCourseGrade" placeholder="输入成绩">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button type="button" class="btn btn-info" id="addGradeAffirm">确认</button>
+												<button type="button" class="btn btn-default" id="concelAddGrade">取消</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--修改课程的模态框-->
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="courseModal">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					课程id<input type="text" id="modalCourseId" disabled="disabled" /><br /> 课程名
+					<input type="text" id="modalCourseName" /><br /> 学分
+					<input type="text" id="modalCourseCredit" /><br /> 内容
+					<input type="text" id="modalCourseContent" /><br />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id="modalCourseAffirm">确认</button>
+				</div>
+			</div>
+		</div>
+		<!--修改学生的模态框-->
+
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="studentModal">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					学生id<input type="text" id="modalStudentId" disabled="disabled" /><br /> 学生姓名
+					<input type="text" id="modalStudentName" /><br /> 学生学号
+					<input type="text" id="modalStudentNo" /><br /> 学生性别
+					<input type="text" id="modalStudentGender" /><br /> 学生出生年月
+					<input type="text" id="modalStudentBirthdate" class="Wdate" onFocus="WdatePicker({lang:'zh-cn'})" /><br /> 学生籍贯
+					<input type="text" id="modalStudentHomecity" /><br /> 学生头像
+					<input type="text" id="modalStudentAvarta" /><br /> 学生密码
+					<input type="text" id="modalStudentPassword" value="" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id="modalStudentAffirm">确认</button>
+				</div>
+			</div>
+		</div>
+		<!--修改成绩的模态框-->
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="scoreModal">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					课程id<input type="text" id="modalScoreCourseId" disabled="disabled" /><br /> 
+					课程名字<input type="text" id="modalScoreCourseName" disabled="disabled" /><br /> 
+					学生id<input type="text" id="modalScoreStudentId" disabled="disabled"/><br /> 
+					学生姓名<input type="text" id="modalScoreStudentName"disabled="disabled" /><br /> 
+					成绩id<input type="text" id="modalScoreId" disabled="disabled"/><br /> 
+					成绩<input type="text" id="modalScore" /><br /> 
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id="modalScoreAffirm">确认</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 * 查找字符串s1在s2中第n次出现的位置   ab   asabcdabcdabcadsabas
+			 */
+			function method(bigStr,smallStr,n)
+			{	var count=0;
+				/*for(var i=0;i<bigStr.length;i++)
+				{
+					if(bigStr.substring(i,smallStr.length+i)==smallStr)
+					{
+						count++;
+						if(count==n)
+						{
+							return i;
+						}
+					}
+				}*/
+				var num=bigStr.indexOf(smallStr);
+				if(num==-1)
+				{
+					return -1;
+				}
+				for(var i=0;i<n-1;i++)
+				{
+					num=bigStr.indexOf(smallStr,num+smallStr.length);
+					if(num==-1)
+					{
+						return -1;
+					}
+				}
+				return num;
+			}
+			console.log(method("abababababab","ab",5));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

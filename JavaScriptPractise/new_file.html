@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/template.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<script type="text/html" id="courseMode">
+		<!--<table class="table-bordered">-->
+			<!--<tr>
+				<td></td>
+				<td>课程名</td>
+				<td>学分</td>
+				<td>内容</td>
+				<td>修改/删除</td>
+			</tr>-->
+			{{each courses as course}}
+			<tr>
+				<td>{{course.id}}</td>
+				<td>{{course.name}}</td>
+				<td>{{course.credit}}</td>
+				<td>{{course.content}}</td>
+				<td>  </td>
+			</tr>
+			{{/each}}
+
+		<!--</table>-->
+	</script>
+		<script type="text/javascript">window.onload = function() {
+	$(function() {
+		var server = "http://172.13.16.2:8900/school/";
+		//为学生列表添加一个点击事件
+		$("#courseList").on("click", function() {
+			$.post(server + "course/list", function(r) {
+				var data={
+					courses:r.data
+				}
+				var coursesList1 = template('courseMode',data);
+				$("#displayCourse").append(coursesList1);
+			})
+
+		});
+	});
+}</script>
+<div id="courseList">
+	nihao
+</div>
+<div id="displayCourse">
+	
+</div>
+	</body>
+</html>

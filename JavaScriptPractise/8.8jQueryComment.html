@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$("#comment").on("click",function(){
+					$("#message").css("display","block");
+					$("#publish").css("display","block");
+					$("#cancel").css("display","block");
+					$("#commentList").css("display","block");
+				});
+				$("#publish").on("click",function(){
+					$("#commentList").prepend($("#message").val());
+					$("#commentList").prepend("<br />");
+					$("#message").val("");
+					$("#message").css("display","none");
+					$("#cancel").css("display","none");
+					$("#publish").css("display","none");
+				});
+				$("#cancel").on("click",function(){
+					 $("#message").val("");
+					 $("#message").css("display","none");
+					 $("#cancel").css("display","none");
+					 $("#publish").css("display","none");
+				});
+			});
+		</script>
+		<style>
+			#commodity{
+				width: 100px;
+				height: 50px;
+				border: 1px solid black;
+			}
+			#message{
+				width: 300px;
+				height: 100px;
+				border: 1px solid black;
+				display: none;
+			}
+			#commentList{
+				width: 300px;
+				height: 300px;
+				border: 1px solid black;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="commodity">商品</div>
+		<input type="button" id="comment" value="评论" />
+		<input type="text" id="message" />
+		<input type="button" id="publish" value="发表" style="display: none;"/>
+		<input type="button" id="cancel" value="取消" style="display: none; "/>
+		<div id="commentList"></div>
+	</body>
+</html>

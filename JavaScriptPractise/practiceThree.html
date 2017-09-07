@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//某个公司采用公用电话传递数据，数据是四位的整数，
+			//在传递过程中是加密的，加密规则如下：每位数字都加上5,
+			//然后用和除以10的余数代替该数字，再将第一位和第四位交换
+			//第二位和第三位交换，请使用程序实现该加密算法
+			/*var number=prompt();
+			number=parseInt(number);*/
+			function encryption(numberOne){
+				var g,s,b,q,temp1;
+				if(!isNaN(numberOne))
+				{
+					q=parseInt(numberOne/1000);
+					b=parseInt((numberOne-q*1000)/100);
+					s=parseInt((numberOne-q*1000-b*100)/10);
+					g=numberOne-q*1000-b*100-s*10;
+					q+=5;
+					b+=5;
+					s+=5;
+					g+=5;
+					q=q%10;
+					b=b%10;
+					s=s%10;
+					g=g%10;
+					temp1=g;
+					g=q;
+					q=temp1;
+					temp1=b;
+					b=s;
+					s=temp1;
+					numberOne=q*1000+b*100+s*10+g;
+					return numberOne;
+				}
+				else{
+					alert("不是正确的数字");
+				}
+			}
+			/*document.write(encryption(number));*/
+			//计算1-2+3-4+5-.......+99-100的结果
+			var sum=0;
+			for(var i=1;i<=100;i++)
+			{
+				sum=sum+i*(Math.pow(-1,i-1));
+			}
+			document.write(sum);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

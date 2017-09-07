@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="My97DatePicker/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="studentList.js" type="text/javascript" charset="utf-8"></script>-->
+		<script type="text/javascript">
+			/*window.onloa=function()
+			{
+				document.getElementById("changeid").innerHTML=location.split('?')[1];
+				alert(document.getElementById("changeid").innerHTML);
+			}
+			*/
+			/*$(function(){
+				var server = "http://172.13.16.2:8900/school/";
+				$.post(server + "student/view/"+document.getElementById("changeid").innerHTML, function(r){
+					
+				});
+			});*/
+			
+		</script>
+	</head>
+	<body>
+		<input type="text" name="id" id="changeid" value="" />
+		<br />
+		<input type="text" name="name" id="changename" value="" />
+		<br />
+		<input type="text" name="no" id="changeno" value="" />
+		<br />
+		<input type="text" name="" id="changegender" value="" />
+		<br />
+		<input id="changestudentBirthdate" class="Wdate" onFocus="WdatePicker({lang:'zh-cn'})" />
+		<br />
+		<input type="text" name="changehomeCity" id="changehomeCity" value="" />
+		<br />
+		<input type="text" name="changeavarta" id="changeavarta" value="" />
+	</body>
+</html>

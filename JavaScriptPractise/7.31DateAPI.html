@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//计算你到进今天活了多少天
+			function myLife(year,month,day)
+			{
+				var myDate=new Date();
+				var myTime=myDate.getTime();
+				//console.log(myTime);
+				myDate.setFullYear(year);
+				myDate.setMonth(month-1);
+				myDate.setDate(day);
+				var myTime1=myDate.getTime();
+				//console.log(myTime1);
+				var liveDay=(myTime-myTime1)/(1000*60*60*24);
+				return liveDay;
+				//console.log(liveDay);
+			}
+			myLife(2017,7,29);
+			// 计算两个人年龄相差多少天？
+			function dayDifference(year1,month1,day1,year2,month2,day2)
+			{ 
+				var day1=myLife(year1,month1,day1);
+				var day2=myLife(year2,month2,day2);
+				day=Math.abs( day1-day2);
+				return  day;
+			}
+			console.log(dayDifference(1995,12,23,1995,12,22));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

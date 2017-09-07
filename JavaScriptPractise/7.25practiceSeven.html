@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script>
+			//将一个数组的奇数位拷贝到另一个数组中前半部分，偶数位数字拷贝到后半部分
+			function copy(a)
+			{
+				var b=new Array();
+				var j=0
+				var k=1;
+				b.length=a.length;
+				for(var i=0;i<a.length;i++)
+				{
+					if(a[i]%2!=0)
+					{
+						b[j]=a[i];
+						j++;
+					}
+					else
+					{
+						b[b.length-k]=a[i];
+						k++;
+					}
+				}
+				return b;
+			}
+			var a=[1,2,3,4,5,6,7,8];
+			console.log(copy(a));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var server = "http://172.13.16.2:8900/school/";
+				$("#add").on("click", function() {
+					var data = {
+						name: $("#name").val(),
+						credit: $("#credit").val(),
+						content: $("#content").val()
+					}
+					//验证是否添加课程重复
+					$.post(server + "course/add", data, function(data) {
+						alert(data.result);
+					});
+				});
+				//查看课程列表
+				$("#courseList").on("click", function() {
+					$.post(server + "course/list", function(r) {
+						for(var i = 0; i < r.data.length; i++) {
+							console.log(r.data[i].name+","+r.data[i].id);
+						}
+					})
+				});
+				//验证是否添加课程重复
+				$("#name").on("blur", function() {
+					$.post(server + "course/isexist/" + $("#name").val(), function(r) {
+						console.log(r.data);
+					})
+				});
+				$("#checkCourse").on("click", function() {
+					$.post(server + "course /view/" + $("#studentId").val(), function(r) {
+						alert(r.message);
+						alert(r.data.name);
+					});
+				});
+				//删除课程
+				$("#delCourse").on("click",function(){
+					$.post(server+"course /del/"+$("#studentId").val(), function(r){
+						alert(r.data);
+					});
+				});
+				//修改课程信息
+				
+			});
+			//查看课程信息
+
+			/*$("#addteacher").on("click",function(){
+				var dataTeacher={
+					name:$("#name").val(),
+					account:$("#account").val(),
+					password:$("#password").val(),
+					gender:$("#gender").val()
+				}
+				$.post(server + "teacher/add" ,dataTeacher, function(dataTeacher) {
+					alert(dataTeacher.result);
+			});
+				
+				});*/
+		</script>
+	</head>
+
+	<body>
+		<div id="table">
+
+		</div>
+
+		<div id="addData">
+			<input type="text" id="name" />
+			<br />
+			<input type="text" id="credit" />
+			<br />
+			<input type="text" id="content" />
+			<br />
+			<input type="button" id="add" value="增加学生" /><br />
+			<input type="text" id="studentId" placeholder="课程id" /><br />
+			<input type="button" id="checkCourse" value="查看课程信息" /><br />
+			<input type="button" id="courseIsexist" value="验证课程是否重复" /><br />
+			<input type="button" id="delCourse" value="删除课程" /><br />
+			<input type="button" id="changeCourse" value="修改课程信息" /><br />
+		</div>
+
+		<!--<div id="addTeacher">
+			<input type="text" id="name" />
+			<br />
+			<input type="text" id="account" />
+			<br />
+			<input type="text" id="password" />
+			<br />
+			<input type="text" id="gender" />
+			<br />
+			<input type="button" id="addteacher" value="增加老师" />
+		</div>-->
+		<input type="button" id="courseList" value="课程列表" />
+	</body>
+
+</html>

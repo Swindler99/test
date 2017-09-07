@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			var a=[1,2,3,4,5]
+			function tailfirst(a){
+				var b=new Array();
+				var j=0;
+				for(var i=a.length-1;i>=0;i--)
+				{	
+					b[j]=a[i];
+					j++;
+				}
+				return b;
+			}
+			console.log(tailfirst(a));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

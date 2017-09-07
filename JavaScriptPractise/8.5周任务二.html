@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var SelectOne;
+			var SelectTwo
+			var selectedOneNum = 0;
+			var selectedTwoNum = 0;
+			var numOne = 1;
+			var numTwo = 1;
+			window.onload = function() {
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET","8.5周任务二.json",true);
+				xhr.send();
+				xhr.onreadystatechange = function() {
+					//console.log(xhr.readyState);
+					if(xhr.readyState == 4 && xhr.status == 200) {
+						var o = JSON.parse(xhr.responseText);
+						//console.log(o);
+						SelectOne = document.createElement("select");
+						SelectOne.id = "selectOne";
+						document.getElementsByTagName("body")[0].appendChild(SelectOne);
+						for(var i = 0; i < o.length; i++) {
+							var newOptionOne = document.createElement("option");
+							newOptionOne.id = "optionOne" + i;
+							newOptionOne.innerText = o[i].name;
+							document.getElementById("selectOne").appendChild(newOptionOne);
+							/*if(document.getElementById("selectOne").children[i].selected) {
+								selectedOneNum = i;
+							}*/
+						}
+
+						document.getElementById("selectOne").onchange = function selectOneChange() {
+							if(numTwo==2)
+							{//如果点击了第一个select框就移除第3个select框中的子节点
+								/*var childListThree = document.getElementById("selectThree").childNodes;
+										for(var a = 0; a < childListThree.length; a++) {
+											childListThree[a].parentNode.removeChild(childListThree[a]);
+											a--;
+										}*/
+										//移除第三个select框
+										document.getElementById("selectThree").parentNode.removeChild(document.getElementById("selectThree"));
+										numTwo=1;//将创建select的标识符设为1，以便于下一次点击第二个select框是在创建一个select框
+							}
+
+							//console.log("ss");
+							//console.log(xhr.readyState);
+							for(var i = 0; i < o.length; i++) {
+								if(document.getElementById("selectOne").children[i].selected) {
+									selectedOneNum = i;
+								}
+							}
+							if(document.getElementById("selectOne").children[selectedOneNum].selected) //判断第一个选择框选到了哪一个地区
+							{
+								//console.log(document.getElementById("selectOne").children[i].name);
+								if(numOne == 1) { //这个判断使得selectTwo只创建一次
+									SelectTwo = document.createElement("select");
+									SelectTwo.id = "selectTwo";
+									document.getElementsByTagName("body")[0].appendChild(SelectTwo); //添加第二个select框
+									numOne++;
+								}
+								if(numOne == 2) {
+									var childListTwo = document.getElementById("selectTwo").childNodes;
+									for(var a = 0; a < childListTwo.length; a++) {
+										childListTwo[a].parentNode.removeChild(childListTwo[a]);
+										a--;
+									}
+								}
+
+								for(var j = 0; j < o[selectedOneNum].city.length; j++) {
+									var newOptionTwo = document.createElement("option");
+									newOptionTwo.id = "optionTwo" + j;
+									newOptionTwo.innerText = o[selectedOneNum].city[j].name;
+									document.getElementById("selectTwo").appendChild(newOptionTwo);
+
+								}
+								document.getElementById("selectTwo").onchange = function selectTwoChange() {
+									for(var i = 0; i < SelectTwo.length; i++) {
+										if(document.getElementById("selectTwo").children[i].selected) {
+											selectedTwoNum = i;
+											//console.log(i);
+										}
+									}
+									if(numTwo == 1) {
+										var SelectThree = document.createElement("select");
+										SelectThree.id = "selectThree";
+										document.getElementsByTagName("body")[0].appendChild(SelectThree); //添加第三个select框
+										numTwo++;
+									}
+									if(numTwo == 2) {
+										var childListThree = document.getElementById("selectThree").childNodes;
+										for(var a = 0; a < childListThree.length; a++) {
+											childListThree[a].parentNode.removeChild(childListThree[a]);
+											a--;
+										}
+									}
+									//console.log(o[selectedOneNum].cityList[selectedTwoNum]);
+									//console.log(o[selectedOneNum].city[selectedTwoNum].area.length);
+									//var aaa=JSON.parse(o[selectedOneNum].cityList[selectedTwoNum]);
+									//console.log(aaa);
+									for(var k = 0; k < o[selectedOneNum].city[selectedTwoNum].area.length; k++) {
+										var newOptionThree = document.createElement("option");
+										newOptionThree.id = "optionThree" + k;
+										newOptionThree.innerText = o[selectedOneNum].city[selectedTwoNum].area[k];
+										document.getElementById("selectThree").appendChild(newOptionThree);
+									}
+									/*for(var k=0;k< newOptionThree.length;k++)
+									{
+										newOptionThree.innerText = o[selectedOneNum].cityList[selectedTwoNum].areaList[k];
+									}*/
+
+								}
+								/*if(numOne == 2 && numTwo == 2) {
+									selectTwoChange();
+								}*/
+							}
+						}
+
+					}
+
+				}
+			}
+
+			/*	
+							if(document.getElementById("selectOne").children[i].selected)//判断第一个选择框选到了哪一个地区
+							{
+								//console.log(document.getElementById("selectOne").children[i].name);
+								var SelectTwo=document.createElement("select");
+								SelectTwo.id="selectTwo";
+								document.getElementsByTagName("body")[0].appendChild(SelectTwo);//添加第二个select框
+								for(var j=0;j<o[i].cityList.length;j++)
+								{
+									var newOptionTwo=document.createElement("option");
+									newOptionTwo.id="optionTwo"+j;
+									newOptionTwo.innerText=o[i].cityList[j].name;
+									document.getElementById("selectTwo").appendChild(newOptionTwo);
+									//判读选中的那个地方有下一个细分的区域
+									//if((document.getElementById("selectTwo").children[j].selected==true)&&(document.getElementById("selectTwo").children[j].cityList[1].areaList==""))
+									//if((document.getElementById("selectTwo").children[j].selected==true)&&(o[0].cityList[0].areaList!=""))
+									if(document.getElementById("selectTwo").children[j].selected)
+									{
+										//console.log(document.getElementById("selectTwo").children[j].areaList);
+										//console.log(document.getElementById("selectTwo").children[0].name);
+										console.log(o[0].cityList[0].areaList);
+										var SelectThree=document.createElement("select");
+										SelectThree.id="selectThree";
+										document.getElementsByTagName("body")[0].appendChild(SelectThree);//添加第三个select框
+										for(var k=0;k<o[i].cityList[j].areaList.length;k++)
+										{
+											var newOptionThree=document.createElement("option");
+											newOptionThree.id="optionThree"+k;
+											newOptionThree.innerText=o[i].cityList[j].areaList[k];
+											document.getElementById("selectThree").appendChild(newOptionThree);
+										}
+									}
+								}
+								
+							}
+						}
+					}
+
+				}
+				
+			}*/
+			//var t=window.setInterval(a,1000);
+		</script>
+	</head>
+
+	<body>
+		<!--<select id="selectOne"></select>-->
+		<!--	<button onclick="a()">test</button>-->
+		<div id="div"></div>
+	</body>
+
+</html>

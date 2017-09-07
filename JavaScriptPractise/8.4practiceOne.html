@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*	
+			 * 注册时，除了对格式校验，校验用户名是否唯一
+			 */
+			function register() {
+				var nickName = document.getElementById("name").value;
+				if(document.getElementById("name").value == "") {
+					console.log("null");
+					return;
+				}
+				var xmlhttp;
+				if(window.XMLHttpRequest) {
+					//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					// IE6, IE5 浏览器执行代码
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				//console.log(xmlhttp.readyState);
+				xmlhttp.onreadystatechange = function() {
+					//console.log(xmlhttp.readyState);
+					if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						var msg = document.getElementById("hint");
+						//var jsName=JSON.stringify(xmlhttp.responseText);
+						console.log(typeof xmlhttp.responseText);
+						var o = JSON.parse(xmlhttp.responseText);
+						for(var i = 0; i < o.length; i++) {
+							//console.log(nickName);
+							//console.log(o[i].name);
+							if(nickName == o[i].name) {
+								msg.innerText = "该昵称已被注册";
+								return false;
+							} else {
+								msg.innerText = "可以使用";
+							}
+						}
+					}
+				}
+				xmlhttp.open("GET", "8.4practiceOne.json", true);
+				xmlhttp.send();
+			}
+		</script>
+	</head>
+
+	<body>
+		<input id="name" value="" /><span id="hint"></span> <br />
+		<button id="but" onclick="register()">注册</button>
+	</body>
+
+</html>

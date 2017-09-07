@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 * 已知一个18位身份证号码（字符串），求出其出生年月日(格式:1990年3月1号或1991年11月29号)
+			 */
+			function dateOfBirth(str)
+			{
+				str=str.substring(6,14);
+				var year=str.substring(0,4);
+				var month=str.substring(4,6);
+				var day=str.substring(6,8);
+				if(month.indexOf("0")==0)//如果检测到有0就会返回这个0所在的位置，没有就会返回-1
+				{
+					month=str.substring(5,6);
+				}
+				if(day.indexOf("0")==0)
+				{
+					day=str.substring(7,8);
+				}
+				return [year+"年"+month+"月"+day+"日"];
+			}
+			console.log(dateOfBirth("123456789002035671"));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 * 
+输出如下图案：嵌套循环
+*  *  *  *  *
+*              *
+*              *
+*              *
+*  *  *  *  *
+			 */
+			
+			for(var i=0;i<5;i++)
+			{
+				if(i==0||i==4)
+				{
+					for(var j=0;j<5;j++)
+					{
+						document.write("*");
+						document.write("&nbsp");
+						document.write("&nbsp");
+					}
+					document.write("<br />");
+				}
+				else{
+					document.write("*");
+					for(var k=0;k<16;k++)
+					{
+						document.write("&nbsp");
+					}
+					document.write("*");
+					document.write("<br />");
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

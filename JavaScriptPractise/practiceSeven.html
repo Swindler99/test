@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 随机产生一个[1-100]之间的随机数(例如35)。
+			 从键盘输入一个整数进行猜数，要求输出是大了还是小了，
+			 和共猜了多少次
+			 */
+			var num1=Math.floor(Math.random()*100)+1;
+			console.log(num1);
+			function guess(num){
+				var guessNum=prompt("请输入你猜的数字");
+				guessNum=parseInt(guessNum);
+				if(num==guessNum)
+				{
+					alert("恭喜，猜对了！");
+					return true;
+				}
+				else if(guessNum>num)
+				{
+					alert("猜大了！");
+					var confirm=prompt("再玩一次吗？y/n");
+					if(confirm=="y"||confirm=="Y")
+					{
+						guess(num1);
+					}
+					else if(confirm=="n"||confirm=="N"){
+						return false;
+					}
+				}
+				else if(guessNum<num){
+					alert("猜小了！");
+					var confirm=prompt("再玩一次吗？y/n");
+					if(confirm=="y"||confirm=="Y")
+					{
+						guess(num1);
+					}
+					else if(confirm=="n"||confirm=="N"){
+						return false;
+					}
+				}
+			}
+			guess(num1);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

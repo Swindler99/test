@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<script src="js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		</script>
+		<style>
+			body {
+				background-color: #EEF3FA;
+			}
+			
+			.navbar {
+				background-color: white;
+				border-bottom: solid;
+			}
+			
+			#data-header {
+				font-size: 22px;
+				font-weight: bold;
+				color: #40D2B1;
+				margin-left: 50px;
+			}
+			
+			.navbar-right {
+				margin-right: 40px;
+			}
+			
+			.navbar-right li a {
+				font-weight: bold;
+			}
+			
+			#twoPart {
+				width: 100%;
+				padding-bottom: 100px;
+				background-color: black;
+				padding-top: 100px;
+			}
+			
+			#threePart {
+				width: 100%;
+				height: 100%;
+				background-color: white;
+				padding-bottom: 100px;
+			}
+			
+			h2 {
+				color: white;
+				font-size: 3vmin;
+			}
+			
+			h6 {
+				color: white;
+				font-size: 1vmin;
+			}
+			
+			.pFontSizeOne {
+				font-size: 2vw;
+			}
+			
+			.pFontSizeTwo {
+				font-size: 0.8vw;
+			}
+			
+			#fourPart {
+				padding-bottom: 200px;
+			}
+			
+			#fivePart {
+				padding-bottom: 200px;
+			}
+			
+			#course {
+				padding-bottom: 100px;
+			}
+			
+			#sixPart {
+				background-color: white;
+			}
+			
+			.btnDiv {
+				padding-top: 20px;
+				padding-bottom: 20px;
+				background-color: gainsboro;
+			}
+			
+			#sevenPart {
+				background-color: black;
+				padding-bottom: 100px;
+				padding-top: 100px;
+				color: white;
+			}
+			#eightPart{
+				padding-bottom: 20px;
+				padding-top: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        				<span class="sr-only">Toggle navigation</span>
+       					<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+      					</button>
+						<a class="navbar-brand" href="#" id="data-header">中软国际</a>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="#">首页</a>
+							</li>
+							<li>
+								<a href="#">论坛</a>
+							</li>
+							<li>
+								<a href="#">前端开发</a>
+							</li>
+							<li>
+								<a href="#">最新课程</a>
+							</li>
+							<li>
+								<a href="#">联系我们</a>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<div id="twoPart">
+			<!--<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-6">-->
+			<h2 class="text-center">bootstrap实战课程等你来战！</h2>
+			<!--</div>-->
+			<h6 class="text-center">本课程适用于：1.WEB开发人员；2.网站维护人员，管理人员</h6>
+			<h6 class="text-center">培训技能的目标：使用bootstrap框架快速构建响应式网页，颠覆传统WEB前端！</h6>
+			<!--</div>-->
+			<!--</div>-->
+			<img class="img-responsive center-block" src="img/android.png" />
+		</div>
+		<div id="threePart">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						<img class="img-responsive" src="img/a.png" />
+						<p class="h3 pFontSizeOne"><strong>Android开发</strong></p>
+						<p class="pFontSizeTwo">Android开发技术交流，问题求助，实战案例分享</p>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						<img class="img-responsive" src="img/i.png" />
+						<p class="h3 pFontSizeOne"><strong>IOS开发</strong></p>
+						<p class="pFontSizeTwo">iOS开发技术交流，海量iOS实战干货分享</p>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						<img class="img-responsive" src="img/b.png" />
+						<p class="h3 pFontSizeOne"><strong>嵌入式底层开发</strong></p>
+						<p class="pFontSizeTwo">底层嵌入式开发，实战案例等技术交流讨论</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="fourPart">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 ">
+						<p class="h3 "><strong>HTML5前端开发</strong></p>
+						<p>一线资深前端开发工程师倾情打造！助你完成普通程序员到优秀工程师的华丽升级！</p>
+						<p><img src="img/a1.png" /> 使用HTML5与CSS3技术轻松实现设备自适应展示。</p>
+						<p><img src="img/a1.png" /> 清晰明了的语义代码结构，更高的可读性，更利于页面的维护的。</p>
+					</div>
+					<div class="col-lg-6 col-md-6 ">
+						<img class="img-responsive" src="img/html5.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="fivePart">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 ">
+						<img class="img-responsive" src="img/Bootstrap.jpg" />
+					</div>
+					<div class="col-lg-6 col-md-6 ">
+						<p class="h3 "><strong>bootstrap实战视频教程</strong></p>
+						<p>一线资深前端开发工程师倾情打造！助你完成普通程序员到优秀工程师的华丽升级！</p>
+						<p><img src="img/a1.png" /> 使用HTML5与CSS3技术轻松实现设备自适应展示。</p>
+						<p><img src="img/a1.png" /> 清晰明了的语义代码结构，更高的可读性，更利于页面的维护的。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="sixPart">
+			<div id="course">
+				<p class="text-center h2"><strong>最新课程</strong></p>
+			</div>
+			<div class="container" style="padding-bottom: 50px;">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+						<img class="img-responsive" src="img/swift.jpg" />
+						<div class="text-center btnDiv">
+							<button type="button" class="btn btn-default" style="border: 1px solid #88E3CE; color: #88E3CE;">
+								<p class="pFontSizeTwo">加入学习</p>
+							</button>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+						<img class="img-responsive" src="img/swift.jpg" />
+						<div class="text-center btnDiv">
+							<button type="button" class="btn btn-default" style="border: 1px solid #88E3CE; color: #88E3CE;">
+									<p class="pFontSizeTwo">加入学习</p>
+							</button>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+						<img class="img-responsive" src="img/swift.jpg" />
+						<div class="text-center btnDiv">
+							<button type="button" class="btn btn-default" style="border: 1px solid #88E3CE; color: #88E3CE;">
+								<p class="pFontSizeTwo">加入学习</p>
+							</button>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+						<img class="img-responsive" src="img/swift.jpg" />
+						<div class="text-center btnDiv">
+							<button type="button" class="btn btn-default" style="border: 1px solid #88E3CE; color: #88E3CE;">
+									<p class="pFontSizeTwo">加入学习</p>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+						<img class="img-responsive" src="img/swift.jpg" />
+						<div class="text-center btnDiv">
+							<button type="button" class="btn btn-default" style="border: 1px solid #88E3CE; color: #88E3CE;">
+									<p class="pFontSizeTwo">加入学习</p>
+							</button>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+						<img class="img-responsive" src="img/swift.jpg" />
+						<div class="text-center btnDiv">
+							<button type="button" class="btn btn-default" style="border: 1px solid #88E3CE; color: #88E3CE;">
+									<p class="pFontSizeTwo">加入学习</p>
+							</button>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+						<img class="img-responsive" src="img/swift.jpg" />
+						<div class="text-center btnDiv">
+							<button type="button" class="btn btn-default" style="border: 1px solid #88E3CE; color: #88E3CE;">
+									<p class="pFontSizeTwo">加入学习</p>
+							</button>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+						<img class="img-responsive" src="img/swift.jpg" />
+						<div class="text-center btnDiv">
+							<button type="button" class="btn btn-default" style="border: 1px solid #88E3CE; color: #88E3CE;">
+									<p class="pFontSizeTwo">加入学习</p>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="sevenPart">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 ">
+						<p class="h2">
+							<span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp;&nbsp;
+							<strong>联系我们</strong>
+						</p>
+						<br />
+						<text> 载客学院是中软国际教育科技集团旗下一个IT在线教育平台,目前已有30万注册用户，
+						10万以上APP下载量，5000小时视频内容，我们从不说空话，专注于IT在线教育，脱离传统教育束缚
+						，让你走哪学哪，想学就学，逗比的老师，贴心的助教，在这儿你能感受到来自五湖四海伙伴们热情
+						和踏实的学习态度！</text>
+						<br />
+						<br />
+						<br />
+						<p> <span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;地址：少城大厦</p>
+						<p><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;联系电话：028-</p>
+						<p><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;邮箱：hr@chinasofti.com</p>
+
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 ">
+						<form class="form-inline">
+							<div class="form-group">
+								<label class="sr-only" for="Inputname">你的姓名</label>
+								<input type="text" class="form-control" id="Inputname" placeholder="你的姓名" style="height: 40px;">
+							</div>
+							&nbsp;&nbsp;&nbsp;
+							<div class="form-group">
+								<label class="sr-only" for="exampleInputEmail3">Email address</label>
+								<input type="email" class="form-control" id="exampleInputEmail3" placeholder="你的邮箱" style="height: 40px;">
+							</div>
+							<br />
+							<br />
+							<br />
+							<div>
+								<label for="title" class="sr-only">标题</label>
+								<input type="text" class="form-control" id="title" placeholder="标题" style="width: 370px;height: 40px;">
+							</div>
+							<br />
+							<br />
+							<br />
+							<div>
+								<label for="content" class="sr-only">留言内容</label>
+								<input type="text" class="form-control" id="content" placeholder="留言内容" style="width: 80%;height: 80px;">
+							</div>
+							<br />
+							<br />
+							<button type="button" class="btn btn-success" style="width: 70%;">提交</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="eightPart">
+			<p class="text-center">Copyright@ 2012-2015 www.chinasofti.com 蜀ICP备</p>
+		</div>
+	</body>
+
+</html>

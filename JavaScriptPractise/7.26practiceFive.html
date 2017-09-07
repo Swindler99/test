@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 * 	1.使用构造函数定义一个商品(Item),属性有编号(no),名称(name),价格(price)
+ 				2，声明函数；传入一个商品和一个数量(nums),计算购买该商品所需的总金额
+				3，使用构造函数实现购物车，其中有若干的商品及数量存储其中，要求提供相关操作实现：
+				3.1 购物车中商品的添加，注意是否已存在于购物车中
+				3.2 购物车中商品的移除，根据编号移除
+				3.3 购物车中商品总金额的计算
+			 */
+			function Item(no,name,price)
+			{
+				this.no=no;
+				this.name=name;
+				this.price=price;
+			}
+			var item1=new Item(1,"牙刷",10);
+			var item2=new Item(2,"肥皂",5);
+			var item3=new Item(3,"牙膏",15);
+			function price(nums,item)
+			{
+				return item.price*nums;
+			}
+			//购物车中的商品及数量信息
+			function CartItem(item,num)
+			{
+				this.item=item;
+				this.num=num;
+			}
+			function Car()
+			{
+				var items=[];
+				this.isExit=function(item)
+				{				
+					for(var i=0;i<items.length;i++)
+					{
+						if(items[i].item.no==item.no)
+						{
+							return i;
+						}
+					}
+					return -1;//表示在购物车里面没有这个产品
+				}
+				this.add=function(item,num)
+				{
+					index=this.isExit(item);
+						if(index==-1)
+						{
+							//cartItem(item,num);
+							var cartItem=new CartItem(item,num);
+							items.push(cartItem);
+						}
+						else{
+							items[index].num+=num;
+						}
+				}
+				this.remove=function(no){
+					for(var i=0;i<items.length;i++)
+					{
+						if(items[i].item.no==no)
+						{
+							items.splice(i,1);
+						}
+					}
+					
+				}
+				this.Total=function()
+				{
+					var total=0;
+					for(var i=0;i<items.length;i++)
+					{
+						if(items[i].item.no!=null)
+						{
+							total+=items[i].item.price*items[i].num;
+						}
+					}
+					return total;
+				}
+				this.showItems=function()
+				{
+					for(var i=0;i<items.length;i++)
+					{
+						console.log(items[i].item.no+","+items[i].item.name+","+items[i].item.price+","+items[i].num);
+						//console.log(items.length);
+					}
+				}
+			}
+				var car=new Car();
+				car.add(item1,3);
+				car.add(item1,3);
+				car.add(item2,3);
+				//car.remove(1);
+				/*car.remove(2);*/
+				car.showItems();
+				console.log(car.Total()) ;
+			/*console.log(price(2,item1));*/
+			/* function Cart(){
+				this.items=new Array();
+				 this.add=function(item,num)
+				{
+					
+					for(var i=0;i<this.items.length;i++)
+					{
+						if(this.items[i].no==item.no)
+						{
+							this.items[i][1]+=num;
+							return items;
+						}
+					}
+					this.items[this.items.length]=new Array();
+					this.items[this.items.length][0]=item;
+					this.items[this.items.length][0]=num;
+					return items;
+				}
+				function remove(no)
+				{
+					
+				}
+				function getTotal(){
+					
+				}
+			}
+			var cart=new Cart();
+			cart.add(item1,1);
+			console.log(cart.itmes[0].name);*/
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

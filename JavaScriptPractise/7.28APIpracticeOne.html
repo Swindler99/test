@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 * 给定一个由字母组成的字符串，统计一下该字符串中元音字母(a,i,e,o,u)的个数
+			 */
+			function statistics(str)
+			{
+				var count=0;
+				for(var i=0;i<str.length;i++)
+				{
+					
+					if(str.charAt(i)=="a"||str.charAt(i)=="e"||str.charAt(i)=="o"||str.charAt(i)=="i"||str.charAt(i)=="u")
+					{
+						count++;
+					}
+					
+				}
+				return count;
+			}
+			console.log(statistics("addfjdjklhsdmkui"));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

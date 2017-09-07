@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<script src="My97DatePicker/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$(function() {
+				var server = "http://172.13.16.2:8900/school/";
+				$("#add").on("click", function() {
+					var data = {
+						name: $("#name").val(),
+						no: $("#no").val(),
+						gender: $("#sex").val(),
+						birthdate: $("#studentBirthdate").val(),
+						homeCity: $("#homeCity").val(),
+						avatar: $("#avatar").val(),
+						password:1
+					}
+					$.post(server + "student/add", data, function(r) {
+						//alert(data.name);
+						alert(r.result);
+						alert(r.message);
+					});
+				});
+				$("#displaystu").on("click", function() {
+					$.post(server + "student/list", function(r) {
+						console.log("he");
+						console.log(r.message);
+						console.log(r.data);
+						for(var i = 0; i < r.data.data.length; i++) {
+							//console.log("q");
+							console.log(r.data.data[i].id, r.data.data[i].name);
+							//console.log(r[i].id, r[i].name);
+						}
+					});
+				});
+
+			});
+		</script>
+	</head>
+
+	<body>
+		<input type="text" name="name" id="name" value="" /><br />
+		<input type="no" name="no" id="no" value="" /><br />
+		<input type="text" id="sex" placeholder="性别"><br />
+		<!--<input id="studentBirthdate" class="Wdate" onFocus="WdatePicker({lang:'zh-cn'})" /><br />-->
+		<input type="text" name="studentBirthdate" id="studentBirthdate" value="" /><br />
+		<input type="text" class="form-control" id="homeCity" placeholder="籍贯"><br />
+		<input type="text" id="avatar" value="无"><br />
+		<input type="button" name="add" id="add" value="添加" />
+		<input type="button" name="displaystu" id="displaystu" value="查看学生" />
+		<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="disabled"><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+	</body>
+
+</html>

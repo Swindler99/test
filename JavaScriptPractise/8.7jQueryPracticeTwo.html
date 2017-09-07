@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var n=0;
+				var myFunction=setInterval(turnDisplay,"1000");
+				function turnDisplay()
+				{
+					if(n==4)
+					{
+						n=0;
+					}
+					switch(n)
+					{
+						case 0:$("div").css("background-image","url(img/GG.jpg)");
+						break;
+						case 1:$("div").css("background-image","url(img/下载.jpg)");
+						break;
+						case 2:$("div").css("background-image","url(img/泰勒.jpg)");
+						break;
+						case 3:$("div").css("background-image","url(img/玛丽莲梦露.jpg)");
+						break;
+					}
+					n++;
+				}
+				$("div").on("mouseover",function(){
+					clearInterval(myFunction);        
+				});
+				$("div").on("mouseout",function(){
+					myFunction=setInterval(turnDisplay,"1000");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div style="height: 300px; width: 200px;border: 1px solid red;">
+			
+		</div>
+	</body>
+</html>

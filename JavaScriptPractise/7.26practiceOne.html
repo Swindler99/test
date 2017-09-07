@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			 var studentOne={
+			 	name:"朱举东",
+			 	gender:"male",
+			 	getGender:function()
+			 	{
+			 		return this.gender;
+			 	}
+			 };
+			 var studentTwo={
+			 	name:"雷登文",
+			 	gender:"male",
+			 	getGender:function()
+			 	{
+			 		return this.gender;
+			 	}
+			 	
+			 };
+			 var studentThree={
+			 	name:"无敌",
+			 	gender:"female",
+			 	getGender:function()
+			 	{
+			 		return this.gender;
+			 	}
+			 };
+			 var students=[studentOne,studentTwo,studentThree];
+			 function getMale(students)
+			 {
+			 	var males=new Array();
+			 	var count=0;
+			 	for(var i=0;i<students.length;i++)
+			 	{
+			 		if(students[i].getGender()==="male")
+			 		{
+			 			males[count]=students[i];
+			 			count++;
+			 		}
+			 	}
+			 	return males;
+			 }
+			 var sex=getMale(students);
+			 for(var i in sex)
+			 {
+			 	if(sex[i].gender=="male")
+			 	{
+			 		console.log(sex[i].name);
+			 	}
+			 }
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

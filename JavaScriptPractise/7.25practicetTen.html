@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//双色球投注时至少选择6个红球（1-33号）和一个蓝球（1-16号）。每注红球号不重复。
+     		//如：红球为 01 07 09 15 23 29  蓝球为08。
+     		function randomRed()
+     		{
+     			var red=Math.floor(Math.random()*33+1)
+     			return red;
+     		}
+     		function randomBule()
+     		{
+     			var bule= Math.floor(Math.random()*16+1)
+     			return bule;
+     		}
+     		function creatRed()
+     		{
+     			var num=randomRed();
+     				if(num<10)
+     				{
+     					num="0"+num;
+     				}
+     			return num;
+     		}
+     		function execl()
+     		{
+     			var a=new Array(7);
+     			count=0;
+     			outermost:
+     			while(count<6)
+     			{
+     				var newNum=creatRed();
+     				for(var j=0;j<a.length;j++)
+     				{
+     					if(a[j]==newNum)
+     					{
+     						continue outermost;
+     					}
+     				}
+     				a[count]=newNum;
+     				count++;
+     			}
+     			var b=randomBule();
+     			if(b<10)
+     			{
+     				b="0"+b;
+     			}
+     			a[6]=b;
+     			return a;
+     				
+     		}
+     		console.log(execl());
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

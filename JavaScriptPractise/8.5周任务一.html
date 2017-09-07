@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="8.5周任务一.js"></script>
+		<link rel="stylesheet" type="text/css" href="8.5周任务一.css" />
+	</head>
+
+	<body>
+		<div id="bigDiv">
+			<div id="left"></div>
+			<div id="right"></div>
+			<div id="main">
+				<header>
+					<div id="name">
+						姓名：<input type="text" id="inputName" />
+					</div>
+					<div id="age">
+						年龄：从<input type="text" id="inputAgeStart" />到<input type="text" id="inputAgeEnd" />
+					</div>
+					<div id="sex">
+						性别：
+						<select id="inputSex">
+							<!--<option selected="selected" disabled="disabled" style="display: none" value=""></option>-->
+							<option value=""></option>
+							<option value="woman">woman</option>
+							<option value="man">man</option>
+						</select>
+					</div>
+					<div id="nationality">
+						国籍：
+						<select id="inputNationality">
+							<option selected="selected" disabled="disabled" style="display: none" value=""></option>
+							<option value=""></option>
+							<option value="日本">日本</option>
+							<option value="美国">美国</option>
+							<option value="中国">中国</option>
+							<option value="法国">法国</option>
+							<option value="不明">不明</option>
+							<option value="英国">英国</option>
+							<option value="韩国">韩国</option>
+							<option value="瑞典">瑞典</option>
+							<option value="意大利">意大利</option>
+						</select>
+					</div>
+					<div id="team">
+						队伍名称：
+						<select id="inputTeam">
+							<option selected="selected" disabled="disabled" style="display: none" value=""></option>
+							<option value=""></option>
+							<option value="饿狼传说队">饿狼传说队</option>
+							<option value="个人参赛者">个人参赛者</option>
+							<option value="龙虎之拳队">龙虎之拳队</option>
+							<option value="小boss">小boss</option>
+							<option value="97特别队">97特别队</option>
+							<option value="新女性格斗家队">新女性格斗家队</option>
+							<option value="金队">金队</option>
+							<option value="主角队">主角队</option>
+							<option value="最终boss">最终boss</option>
+							<option value="怒队">怒队</option>
+							<option value="三大天王">三大天王</option>
+							<option value="超能力战士队">超能力战士队</option>
+						</select>
+					</div>
+					<input type="button" value="查询" id="search" />
+					<span id="promptMessage"></span>
+				</header>
+				<center>
+					<table>
+						<tr id="trOne">
+							<td>头像</td>
+							<td>名字</td>
+							<td>性别</td>
+							<td>年龄</td>
+							<td>所属队伍</td>
+							<td>国籍</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+					<div id="nav">
+						<ul>
+							<li id="liFirstPage">
+								<a href="#">首页</a>
+							</li>
+							<li id="liTwoPage">
+								<a href="#">2</a>
+							</li>
+							<li id="liThreePage">
+								<a href="#">3</a>
+							</li>
+							<li id="liFourPage">
+								<a href="#">4</a>
+							</li>
+							<li id="liFivePage">
+								<a href="#">5</a>
+							</li>
+							<li id="liSixPage">
+								<a href="#">6</a>
+							</li>
+							<li id="liLastpage">
+								<a href="#">尾页</a>
+							</li>
+							<li id="previousPage">
+								<a href="#">上一页</a>
+							</li>
+							<li id="nextPage">
+								<a href="#">下一页</a>
+							</li>
+						</ul>
+						<input type="text" id="interPage" placeholder="输入页数" />
+						<input type="button" id="clickJump" value="点击跳转" />
+						<select id="dropDownBox">
+							<option selected="selected" disabled="disabled" style="display: none" value=""></option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+						</select>
+					</div>
+				</center>
+				<footer>
+					<input type="button" id="resultPreviousPage" value="查询结果向上翻页" />
+					<input type="button" id="resultNextPage" value="查询结果向下翻页" />
+				</footer>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

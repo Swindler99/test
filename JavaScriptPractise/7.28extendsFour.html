@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 * 原型式继承----道格拉斯.克罗克福德
+			 * 这种方法并没有使用严格意义上的构造函数，他的想法是借助
+			 * 原型可以基于已有的对象创建新对象，同时还不必因此创建自定义类型
+			 */
+			function object(o)
+			{
+				function F(){
+					F.prototype=o;
+					return new F();
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

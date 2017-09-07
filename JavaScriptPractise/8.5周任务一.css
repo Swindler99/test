@@ -1,0 +1,188 @@
+body{
+	margin: 0 auto;
+	padding: 0px;
+}
+#left{
+	width: 200px;
+	height: 900px;
+	/*border: 1px solid red;*/
+	float: left;
+	background-image: url(img/八神.png);
+	background-repeat: no-repeat;
+}
+#right{
+	width: 200px;
+	height: 900px;
+	/*border: 1px solid red;*/
+	float: right;
+	background-image: url(img/草稚京background.png);
+	background-repeat: no-repeat;
+}
+#bigDiv{
+	height: 900px;
+	width: 1200px;
+/*	border: 1px solid blueviolet ;*/
+	margin: 0 auto;
+	padding: 0px;
+}
+#main{
+	margin: 0 auto;
+	width: 800px;
+	height: 900px;
+	/*border: 2px gray solid;*/
+/*	background-image: url(img/1.jpg);*/
+	background-repeat: no-repeat;
+}
+header{
+	width: 100%;
+	height: 100px;
+	/*border: 10px solid black;*/
+	margin: 0 auto;
+	
+}
+#name{
+	float: left;
+	width: 150px;
+	height: 50px;
+	/*border: 1px solid red;*/
+	margin: 0 auto;
+	padding: 0px;
+}
+#inputName{
+	width: 80px;
+}
+#inputAgeStart{
+	width: 60px;
+}
+#inputAgeEnd{
+	width: 60px;
+}
+#inputSex{
+	width: 60px;
+	
+}
+#age{
+	float: left;
+	height: 50px;
+}
+#sex{
+	float: left;
+	height: 50px;
+}
+#nationality{
+	float: left;
+	height: 50px;
+}
+#team{
+	float: left;
+	height: 50px;
+}
+#search{
+	display: block;
+	width: 100px;
+	height: 40px;
+	background-color: greenyellow;
+	font-family: "微软雅黑";
+	font-weight: bold;
+	font-size: 20px;
+	margin: 0 auto;
+}
+#promptMessage{
+	display: block;
+	width: 250px;
+	height: 30px;
+	/*border: 1px solid red;*/
+	position: relative;
+	left: 460px;
+	top: -35px;
+}
+center{
+	width: 100%;
+	height: 700px;
+/*	border: 1px solid red;*/
+}
+table{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+#trOne{
+	
+}
+tr{
+	height: 40px;
+	
+}
+td{
+	height: 100px;
+	width: 130px;
+	border:  2px solid gray;
+	font-family: "微软雅黑";
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+}
+#nav{
+	width: 100%;
+	height: 50px;
+	/*border: 1px solid yellowgreen;*/
+}
+#nav ul{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	/*margin-left: 20px;*/
+}
+#nav ul li{
+	display: block;
+	width: 50px;
+	height: 30px;
+	/*border: 1px solid black;*/
+	float: left;
+	margin-left: 20px;
+	font-family: "微软雅黑";
+	font-size: 15px;
+	/*padding-top: 20px;*/
+	text-align: center;
+	background-color: greenyellow;	
+}
+#nav ul li a{
+	text-decoration: none;
+	display: block;
+	width: 50px;
+	height: 30px;
+	color: black;
+}
+#interPage{
+	width: 50px;
+	height: 20px;
+}
+select{
+	float: right;
+}
+footer{
+	width: 100%;
+	height: 100px;
+	margin: 0 auto;
+	padding: 0px;
+}
+#resultPreviousPage{
+	width: 200px;
+	height: 80px;
+	margin-left: 150px;
+	background-color: greenyellow;
+	font-family: "微软雅黑";
+	font-size: 20px;
+	color: black;
+	font-weight: bold;
+}
+#resultNextPage{
+	width: 200px;
+	height: 80px;
+	margin-left: 100px;
+ background-color: greenyellow;
+	font-family: "微软雅黑";
+	font-size: 20px;
+	color: black;
+	font-weight: bold;
+}
+

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var number1=prompt();
+			number1=parseInt(number1);
+			var number2=prompt();
+			number2=parseInt(number2);
+			var arrayOne=[1,2,3,4,5,6,7,8,9,10];
+			/*console.log(typeof(number1))
+			console.log(number1);*/
+			//判断是否为奇数
+			function judgeOdd(numberOne){
+				if(!isNaN(numberOne))
+				{
+						if(numberOne%2!=0)
+					{
+						alert("this is an odd number!");
+					}
+					else if(numberOne%2==0){
+						alert("this is an even number!");
+					}
+				}
+				else{
+					alert("this is an NaN!");
+				}
+			}
+			//计算四位数各个位置上加起来的和
+			function countFourSum(numberOne)
+			{
+				if(!isNaN(numberOne)){
+				var first,second ,third,fourth,sum;
+				first=numberOne/1000;
+				first=parseInt(first);
+				second=(numberOne-first*1000)/100;
+				second=parseInt(second);
+				third=(numberOne-first*1000-second*100)/10;
+				third=parseInt(third);
+				fourth=numberOne%10;
+				sum=first+second+third+fourth;
+				alert("sum is:"+sum);
+				}
+				else{
+					alert("this is NaN!");
+				}
+			}
+			//给定一个任意的整数，计算所有位置上的数字之和
+			function countSum(numberOne){
+				if(!isNaN(numberOne))
+				{
+					var a=new Array();
+					var sum=0;
+					numberOne=String(numberOne);
+					for(var i=0;i<numberOne.length;i++)
+					{
+						a[i]=parseInt(numberOne[i]);
+						sum+=a[i];
+					}
+					alert("sum is :"+sum);
+				}
+				else{
+					alert("this is an NaN!");
+				}
+				
+			}
+			//写一个函数判断一个数组中是否包含了某个值
+			function judgeNumber(numberOne)
+			{
+				var num=0;
+				for(var i=0;i<arrayOne.length;i++)
+				{
+					if(numberOne==arrayOne[i])
+					{
+						alert(numberOne+":in array!");
+						num++;
+					}
+					
+				}
+				if(num==0)
+				{
+					alert(numberOne+":is not in array!")
+				}
+			}
+			//根据百分制，换算成a,b,c,d,e
+			function gradeLevel(numberOne){
+				if(numberOne>=90)
+				{
+					alert("gradeLevel is A");
+				}
+				else if(numberOne>=80)
+				{
+					alert("gradelevel is B");
+				}
+				else if(numberOne>=70)
+				{
+					alert("gradelevel is C");
+				}
+				else if(numberOne>=60)
+				{
+					alert("gradelevel is D");
+				}
+				else
+				{
+					alert("gradelevel is E");
+				}
+				
+			}
+			//根据指定的年份，判断是否为闰年
+			function judgeLeapYear(numberOne)
+			{
+				if(numberOne%400==0||(numberOne%4==0&&numberOne%100!=0))
+				{
+					/*alert(numberOne+":is leap year!");*/
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
+			//根据年份和月份获取当月的天数
+			function judgeDay(year,month)
+			{
+				switch(month){
+					case 1:
+					case 3:
+					case 5:
+					case 7:
+					case 8:
+					case 10:
+					case 12:
+						return 31;
+						break;
+					case 2:if(year%400==0||(year%4==0&&year%100!=0))
+						{
+							return 28;
+						}
+						else{
+							return 29;
+						}
+						break;
+					case 4:
+					case 6:
+					case 9:
+					case 11:
+						return 30;
+						break;
+					default:
+						console.log("输入不正确");
+				}
+			}
+			//judgeOdd(number1);
+			//countFourSum(number1);
+			//countSum(number1);
+			//judgeNumber(number1);
+			//gradeLevel(number1);
+			/*if(judgeLeapYear(number1)==true)
+			{
+				document.write(number1+":is leap year!");
+			}
+			else{
+				document.write(number1+":is not leap year!");
+			}*/
+			
+			document.write(judgeDay(number1,number2));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

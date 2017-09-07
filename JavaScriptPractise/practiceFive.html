@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//一球从100米高度自由落下，每次落地后反跳回原高度的一半；
+			//再落下，求它在第10次落地时，共经过多少米？第10次反弹多高？
+			var count=0;
+			var sum=0,distance=100;
+			while(count<=9)
+			{
+				sum+=distance;
+				distance-=distance/2;
+				count++;
+				sum+=distance;
+			}
+			document.write(sum);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

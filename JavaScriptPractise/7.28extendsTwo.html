@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 继承第二种方式------借用构造函数
+			 优点：解决了单独使用原型链时在子类中传入参数会影响到下一个实例化时产生的结果
+			 参数会一直保存在子类对象中
+			 缺点：仅仅使用借用构造函数，那么也将无法避免构造函数模式存在的问题
+			 ----方法都在构造函数中定义，因此函数复用无从谈起。而且在超类型的原型中定义的方法
+			 ，对于类型而言也是不可见的，结果所有类型都只能使用构造函数模式
+			 因此借用构造函数也是很少单独使用的。
+			 
+			 * */
+			function SuperType()
+			{
+				this.colors=["red","blue","greed"];
+				this.name=function(){
+					console.log(1);
+				}
+			}
+			function SubType()
+			{
+				//继承了SuperType
+				SuperType.call(this);
+			}
+			
+			var instance1=new SubType();
+			instance1.colors.push("black");
+			console.log(instance1.colors);
+			instance1.name();
+			var instance2=new SubType();
+			console.log(instance2.colors);
+			/*
+			 	
+			 	借用构造函数传递参数
+			 	* */
+			 	function SuperTypeNew(name)
+			 	{
+			 		this.name=name;
+			 	}
+			 	function SubTypeNew()
+			 	{
+			 		//继承了superTypeNew并且传递了参数
+			 		SuperTypeNew.call(this,"Tom");
+			 		//定义了新的属性
+			 		this.age=29;
+			 	}
+			 	var instance3=new SubTypeNew();
+			 	console.log([instance3.name,instance3.age]);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

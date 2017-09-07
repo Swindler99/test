@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//在控制台做一个秒表，每一秒输出一次当前的时间，精确到秒
+		//	window.onload=function(){
+				 function getSecond()
+				{
+					var date=new Date();
+					var year=date.getFullYear();
+					var mon=date.getMonth();
+					var da=date.getDate();
+					var h=date.getHours();
+					var m=date.getMinutes();
+					var s=date.getSeconds();
+					var d=document.getElementById("Date");
+					//d.innerHTML="当前时间："+year+"年"+mon+"月"+da+"日"+" "+h+":"+m+":"+s;
+					console.log("1");
+				}
+			//}
+			
+			getSecond();
+		</script>
+	</head>
+	<body>
+		<div id="Date">
+			
+		</div>
+	</body>
+</html>
