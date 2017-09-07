@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			var subArray=[2,4,3,6];
+			var parentArray=[2,4,3,6,7];
+			function judge(subarray,parentarray)
+			{
+				for(var j=0;j<=parentarray.length-subarray.length;j++)
+				{
+					//计算从
+					var count=0;
+					count=0;
+					for(var i=j;i<subarray.length+j;i++)
+						{
+							
+							for(var k=0;k<subarray.length;k++)
+							{
+								if(subarray[k]==parentarray[i])
+								{
+									count++;
+									if(count==subarray.length)
+										{
+											return true;
+										}
+								}
+							}
+						}
+				}
+				return false;	
+			}
+			console.log(judge(subArray,parentArray));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
